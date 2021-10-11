@@ -38,14 +38,14 @@ namespace SmartMed_BackEnd_CodeChallenge.MedicationData
             throw new NotImplementedException();
         }
 
-        public Medication GetMedication(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<Medication> GetMedications()
         {
             return medications;
+        }
+
+        public Medication GetMedication(Guid id)
+        {
+            return medications.SingleOrDefault(x => x.Id == id);
         }
     }
 }

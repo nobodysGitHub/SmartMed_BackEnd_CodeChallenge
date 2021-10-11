@@ -24,5 +24,19 @@ namespace SmartMed_BackEnd_CodeChallenge.Controllers
         {
             return Ok(_medicationData.GetMedications());
         }
+
+        [HttpGet]
+        [Route("api/[controller]/{id}")]
+        public IActionResult GetMedication(Guid id)
+        {
+            var medication = _medicationData.GetMedication(id);
+
+            if(medication != null)
+            {
+                return Ok(_medicationData.GetMedications());
+            }
+
+            return NotFound($"The medication with Id: {id} was not found");
+        }
     }
 }
