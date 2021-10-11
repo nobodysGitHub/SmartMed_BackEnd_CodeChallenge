@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SmartMed_BackEnd_CodeChallenge.MedicationData
 {
-    interface IMedicationData
+    public interface IMedicationData
     {
         List<Medication> GetMedications();
 
