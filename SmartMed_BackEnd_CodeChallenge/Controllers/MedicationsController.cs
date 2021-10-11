@@ -44,9 +44,16 @@ namespace SmartMed_BackEnd_CodeChallenge.Controllers
         [Route("api/[controller]")]
         public IActionResult GetMedication(Medication medication)
         {
-            _medicationData.AddMedication(medication);
+            if(medication.Quantity > 0)
+            {
+                _medicationData.AddMedication(medication);
 
-            return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + medication.Id, medication);
+                return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + medication.Id, medication);
+            }
+         
+           
+            return NotFound("you can't create an empty medication, quantity has to be greater than zero");
+            
         }
 
         [HttpDelete]
@@ -58,7 +65,8 @@ namespace SmartMed_BackEnd_CodeChallenge.Controllers
             if(medication != null)
             {
                 _medicationData.DeleteMedication(medication);
-                
+
+                return Ok("The medication was deleted succesfully");
             }
 
             return NotFound("The medication you were loocking for was not found");

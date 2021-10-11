@@ -46,6 +46,7 @@ namespace SmartMed_BackEnd_CodeChallenge.MedicationData
         {
             medication.Id = Guid.NewGuid();
             medication.CreationDate = DateTime.Now;
+
             medications.Add(medication);
             return medication;
         }
