@@ -37,7 +37,7 @@ namespace SmartMed_BackEnd_CodeChallenge.Controllers
                 return Ok(_medicationData.GetMedications());
             }
 
-            return NotFound("The medication you were loocking for was not found");
+            return NotFound("The medication you were loocking for was not found.");
         }
 
         [HttpPost]
@@ -46,12 +46,12 @@ namespace SmartMed_BackEnd_CodeChallenge.Controllers
         {
             if(medication.Quantity <= 0)
             {
-                return NotFound("you can't create an empty medication, quantity has to be greater than zero");
+                return NotFound("you can't create an empty medication, quantity has to be greater than zero.");
             }
            
             if (medication.Name == null || medication.Name == "")
             {
-                return NotFound("you can't create a medication without a name");
+                return NotFound("you can't create a medication without a name.");
             }
            
            
@@ -71,10 +71,10 @@ namespace SmartMed_BackEnd_CodeChallenge.Controllers
             {
                 _medicationData.DeleteMedication(medication);
 
-                return Ok("The medication was deleted succesfully");
+                return Ok("The medication was deleted succesfully.");
             }
 
-            return NotFound("The medication you were loocking for was not found");
+            return NotFound("The medication you were loocking for was not found.");
             
         }
     }
