@@ -44,15 +44,20 @@ namespace SmartMed_BackEnd_CodeChallenge.Controllers
         [Route("api/[controller]")]
         public IActionResult GetMedication(Medication medication)
         {
-            if(medication.Quantity > 0)
+            if(medication.Quantity <= 0)
             {
-                _medicationData.AddMedication(medication);
-
-                return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + medication.Id, medication);
+                return NotFound("you can't create an empty medication, quantity has to be greater than zero");
             }
-         
            
-            return NotFound("you can't create an empty medication, quantity has to be greater than zero");
+            if (medication.Name == null || medication.Name == "")
+            {
+                return NotFound("you can't create a medication without a name");
+            }
+           
+           
+            _medicationData.AddMedication(medication);
+
+            return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + medication.Id, medication);
             
         }
 
