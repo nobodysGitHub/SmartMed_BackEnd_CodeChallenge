@@ -36,7 +36,7 @@ namespace SmartMed_BackEnd_CodeChallenge.Controllers
                 return Ok(_medicationData.GetMedications());
             }
 
-            return NotFound($"The medication with Id: {id} was not found");
+            return NotFound("The medication you were loocking for was not found");
         }
     }
 }
