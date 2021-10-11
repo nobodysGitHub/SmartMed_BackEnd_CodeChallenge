@@ -30,10 +30,7 @@ namespace SmartMed_BackEnd_CodeChallenge.MedicationData
 
         
 
-        public void DeleteMedication(Medication medication)
-        {
-            throw new NotImplementedException();
-        }
+       
 
         public List<Medication> GetMedications()
         {
@@ -51,6 +48,11 @@ namespace SmartMed_BackEnd_CodeChallenge.MedicationData
             medication.CreationDate = DateTime.Now;
             medications.Add(medication);
             return medication;
+        }
+
+        public void DeleteMedication(Medication medication)
+        {
+            medications.Remove(medication);
         }
 
     }

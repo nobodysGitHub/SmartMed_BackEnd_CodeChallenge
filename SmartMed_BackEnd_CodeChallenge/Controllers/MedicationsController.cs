@@ -48,5 +48,21 @@ namespace SmartMed_BackEnd_CodeChallenge.Controllers
 
             return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + medication.Id, medication);
         }
+
+        [HttpDelete]
+        [Route("api/[controller]/{id}")]
+        public IActionResult DeleteMedication(Guid id)
+        {
+            var medication = _medicationData.GetMedication(id);
+
+            if(medication != null)
+            {
+                _medicationData.DeleteMedication(medication);
+                
+            }
+
+            return NotFound("The medication you were loocking for was not found");
+            
+        }
     }
 }
