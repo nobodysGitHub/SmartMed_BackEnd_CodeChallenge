@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SmartMed_BackEnd_CodeChallenge.MedicationData;
+using SmartMed_BackEnd_CodeChallenge.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +38,15 @@ namespace SmartMed_BackEnd_CodeChallenge.Controllers
             }
 
             return NotFound("The medication you were loocking for was not found");
+        }
+
+        [HttpPost]
+        [Route("api/[controller]")]
+        public IActionResult GetMedication(Medication medication)
+        {
+            _medicationData.AddMedication(medication);
+
+            return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + medication.Id, medication);
         }
     }
 }
